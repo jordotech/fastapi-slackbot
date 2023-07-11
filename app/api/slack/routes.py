@@ -5,8 +5,10 @@ import slack
 from cachetools.func import ttl_cache
 from fastapi import APIRouter, Body, HTTPException
 from pydantic import BaseModel
-
+from utils import get_logger
 from config import settings
+
+logger = get_logger("app")
 
 
 class SlackMessageIn(BaseModel):
@@ -16,15 +18,12 @@ class SlackMessageIn(BaseModel):
     text: str = None
 
 
-logger = logging.getLogger("app")
-
 router = APIRouter()
-
-client = slack.WebClient(token=settings.SLACK_BOT_TOKEN)
 
 
 @ttl_cache(ttl=5 * 60 * 60)  # cache for 5 hours
 def get_member_list():
+    client = slack.WebClient(token=settings.SLACK_BOT_TOKEN)
     try:
         response = client.users_list()
         return response["members"]
@@ -45,7 +44,7 @@ def get_user_id_by_username(username: str, member_list: list = None):
 
 
 @router.post("")
-async def send_to_slack(
+def send_to_slack(
     payload: SlackMessageIn = Body(
         None,
         description="Send a message to slack",
@@ -106,6 +105,7 @@ async def send_to_slack(
     mentions = payload.mentions
     text = payload.text
     blocks = payload.blocks
+    client = slack.WebClient(token=settings.SLACK_BOT_TOKEN)
 
     if not blocks and not text:
         raise HTTPException(
@@ -118,8 +118,9 @@ async def send_to_slack(
             if mentions
             else []
         )
-        mentions_text = " ".join(f"<@{user_id}>" for user_id in user_ids if user_id)
-        text = f"{mentions_text} {text}"
+        if any(user_ids):
+            mentions_text = " ".join(f"<@{user_id}>" for user_id in user_ids if user_id)
+            text = f"{mentions_text} {text}"
     if text and not blocks:
         result = client.chat_postMessage(channel=channel, text=text)
     else:
