@@ -43,6 +43,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:$BRANCH_NAME
+          tags: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.BRANCH_NAME }}
 
 
