@@ -1,16 +1,20 @@
-# Slackbot Service
+# FastAPI + Slack
 
-## Purpose
-This service will live in the cluster and any other service can POST messages 
-to be delivered to your company slack.
+Super simple docker image you can use to send messages from all your apps to your slack.
 
-## Getting started
+## Docker
 
-1. clone repo 
-2. Add a `.env` file to project root with `SLACK_BOT_TOKEN="<secret>"`
-3. run `docker compose up -d`
-4. go to http://localhost:7171/docs to learn how to use.
+You can pull and run the docker image, just supply your `SLACK_BOT_TOKEN` as an env var
 
-## Slack app
+## Run locally
 
-Go here to configure: [https://api.slack.com/apps/A054K9Z9JUD/general](https://api.slack.com/apps/A054K9Z9JUD/general)
+```shell
+docker run --rm -e SLACK_BOT_TOKEN=<your_token> --name slackbot -p 7171:80 jordotech/fastapi-slackbot:latest
+```
+
+## Local Docker Compose
+1. Clone this repo
+2. Create a `.env` file in the project root with `SLACK_BOT_TOKEN=<your_token>`
+3. Run `docker compose up -d`
+
+Then open [http://localhost:7171/docs](http://localhost:7171/docs) to view the swagger and experiment sending messages.
