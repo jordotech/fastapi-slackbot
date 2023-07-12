@@ -15,7 +15,7 @@ from local_logger import log_config
 logger = logging.getLogger("app")
 dictConfig(log_config)
 
-app_version = "v1.0.0"
+app_version = "v0.1.1"
 app = FastAPI(
     title="FastAPI Slackbot API",
     debug=settings.DEBUG,

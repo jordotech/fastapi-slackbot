@@ -7,7 +7,7 @@ from fastapi import APIRouter, Body, HTTPException
 from pydantic import BaseModel
 from utils import get_logger
 from config import settings
-
+from slack.errors import SlackApiError
 logger = get_logger("app")
 
 
@@ -51,14 +51,20 @@ def send_to_slack(
         examples={
             "Send plaintext message": {
                 "value": {
-                    "channel": "#test-channel",
+                    "channel": "#testing",
                     "mentions": ["@test-user"],
                     "text": "Hello, World!",
                 },
             },
+            "422 response for non-existing channel": {
+                "value": {
+                    "channel": "#not-a-real-channel",
+                    "text": "This will not work!",
+                },
+            },
             "Send blocks": {
                 "value": {
-                    "channel": "#test-channel",
+                    "channel": "#testing",
                     "blocks": [
                         {
                             "type": "section",
@@ -121,8 +127,12 @@ def send_to_slack(
         if any(user_ids):
             mentions_text = " ".join(f"<@{user_id}>" for user_id in user_ids if user_id)
             text = f"{mentions_text} {text}"
-    if text and not blocks:
-        result = client.chat_postMessage(channel=channel, text=text)
-    else:
-        result = client.chat_postMessage(channel=channel, blocks=blocks)
+    try:
+        if text and not blocks:
+            result = client.chat_postMessage(channel=channel, text=text)
+        else:
+            result = client.chat_postMessage(channel=channel, blocks=blocks)
+    except SlackApiError as e:
+        logger.error(e.response)
+        raise HTTPException(status_code=422, detail=f"Slack API error: {e.response.get('error')}")
     return {"result": result.get("ok")}
