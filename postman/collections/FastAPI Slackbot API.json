@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "e609e0d8-b95e-40ce-b16b-c04678980b29",
+		"name": "FastAPI Slackbot API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "2784682-e609e0d8-b95e-40ce-b16b-c04678980b29"
+	},
+	"item": [
+		{
+			"name": "send-message",
+			"item": [
+				{
+					"name": "Send To Slack",
+					"id": "2bc170c4-e431-4cbd-83df-23767796d00f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/send-message",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"send-message"
+							]
+						},
+						"description": "Send a message to a slack workspace.\nMessages are sent as \"blocks\", which are a collection of components that can be combined to create visually rich\nand compellingly interactive messages.\nGo to [slack block-kit builder docs](https://app.slack.com/block-kit-builder) for more examples."
+					},
+					"response": [
+						{
+							"id": "ec8e15d2-bad3-4294-9f6f-0a1f9dab3af5",
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/send-message",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"send-message"
+									]
+								},
+								"description": "Send a message to a slack workspace.\nMessages are sent as \"blocks\", which are a collection of components that can be combined to create visually rich\nand compellingly interactive messages.\nGo to [slack block-kit builder docs](https://app.slack.com/block-kit-builder) for more examples."
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"id": "f10ae6fa-e5cd-4536-831d-db40121415df",
+							"name": "Validation Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/send-message",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"send-message"
+									]
+								},
+								"description": "Send a message to a slack workspace.\nMessages are sent as \"blocks\", which are a collection of components that can be combined to create visually rich\nand compellingly interactive messages.\nGo to [slack block-kit builder docs](https://app.slack.com/block-kit-builder) for more examples."
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}"
+						},
+						{
+							"id": "6e690f57-75c7-4c87-b1bf-7de2af58bd01",
+							"name": "Send To Slack",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/send-message",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"send-message"
+									]
+								},
+								"description": "Send a message to a slack workspace.\nMessages are sent as \"blocks\", which are a collection of components that can be combined to create visually rich\nand compellingly interactive messages.\nGo to [slack block-kit builder docs](https://app.slack.com/block-kit-builder) for more examples."
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "78e24874-6774-453f-9113-d43c59479897"
+		},
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "version",
+					"item": [
+						{
+							"name": "Display Version",
+							"id": "cf67a1eb-e1a4-4dc5-aa35-41305715758e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/public/version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"public",
+										"version"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "b704aaaf-378e-4f34-9306-78b5462688a5",
+									"name": "Successful Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/public/version",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"public",
+												"version"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					],
+					"id": "12c5537b-95eb-4c77-b42f-b38f3bd7d778"
+				}
+			],
+			"id": "b496293d-559b-4e9a-8f84-da92581af435"
+		}
+	],
+	"variable": [
+		{
+			"id": "ac10fa32-9457-4711-8eba-dfed6bf6792b",
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
