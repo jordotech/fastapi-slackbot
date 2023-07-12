@@ -29,7 +29,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+							"raw": "{\n  \"channel\": \"#testing\",\n  \"text\": \"Hello, World!\"\n}",
 							"options": {
 								"raw": {
 									"headerFamily": "json",
@@ -51,7 +51,7 @@
 					"response": [
 						{
 							"id": "ec8e15d2-bad3-4294-9f6f-0a1f9dab3af5",
-							"name": "Successful Response",
+							"name": "Successful plain text message",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -66,7 +66,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+									"raw": "{\n  \"channel\": \"#testing\",\n  \"text\": \"Hello, World!\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -144,47 +144,6 @@
 							],
 							"cookie": [],
 							"body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"loc\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"msg\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}"
-						},
-						{
-							"id": "6e690f57-75c7-4c87-b1bf-7de2af58bd01",
-							"name": "Send To Slack",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"channel\": \"<string>\",\n  \"text\": \"<string>\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/send-message",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"send-message"
-									]
-								},
-								"description": "Send a message to a slack workspace.\nMessages are sent as \"blocks\", which are a collection of components that can be combined to create visually rich\nand compellingly interactive messages.\nGo to [slack block-kit builder docs](https://app.slack.com/block-kit-builder) for more examples."
-							},
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"body": null
 						}
 					]
 				}
@@ -266,11 +225,33 @@
 			"id": "b496293d-559b-4e9a-8f84-da92581af435"
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "50087096-30b4-40e3-9cc0-ee55f501f184",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "58fe3d04-47de-467a-acdc-ab5734c578bc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"id": "ac10fa32-9457-4711-8eba-dfed6bf6792b",
+			"id": "4de7fd85-d234-486d-9eb3-285a8c280467",
 			"key": "baseUrl",
-			"value": "/"
+			"value": "http://localhost:7171"
 		}
 	]
 }
